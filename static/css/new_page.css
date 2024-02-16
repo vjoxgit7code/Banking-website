@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('/static/images/new_page.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+    backdrop-filter: blur(7px);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding: 30px;
+    background: transparent;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: flex-end;
+    z-index: 56;
+}
+
+.navigation {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+.content{
+    color:#f3cf03;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 0 1px 0 black;
+    font-weight: bold;
+    font-size:larger;
+}
+.content h2{
+    color:#fff;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 0 2px 0 black;
+    font-weight: bold;
+}
+
+.btn {
+    display: block; /* Change to block to center horizontally */
+    width: fit-content; /* Adjust width to fit content */
+    margin: 0 auto 10px; /* Auto margin for centering and space below */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Corrected class name for primary button */
+.btn-primary {
+    background-color: #007bff; /* Primary color */
+    color: #fff; /* Text color */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
+.content p {
+    margin-bottom: 20px; /* Adjust margin bottom for space below paragraph */
+}

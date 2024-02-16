@@ -1,0 +1,162 @@
+/* Importing the Poppins font with various weights */
+@import url("https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+/* Resetting default styles for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif; /* Setting the default font family */
+}
+
+/* Styling for the body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('/static/images/ocean_09.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+    backdrop-filter: blur(5px); /* Apply blur effect to the entire body background */
+    overflow-x: hidden;
+}
+
+/* Styling for a container element */
+.container {
+    width: 50%; /* Setting width to 50% of the parent */
+    margin: 80px auto; /* Centering the container horizontally with 90px top and bottom margin */
+    background-color: rgba(255, 255, 255, 0.5); /* Setting semi-transparent background color */
+    padding: 20px; /* Adding padding to the container */
+    border-radius: 10px; /* Adding border radius to the container */
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Adding shadow to the container */
+    backdrop-filter: blur(10px); /* Apply additional blur effect to the container background */
+}
+
+/* Styling for header elements */
+header {
+    font-size: 30px; /* Setting font size */
+    text-align: center; /* Centering the text */
+    margin-bottom: 20px; /* Adding bottom margin */
+    font-family: 'Poppins', sans-serif; /* Setting font family */
+    font-weight: bold; /* Making text bold */
+}
+
+/* Styling for forms */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.field-group {
+    flex: 1;
+}
+
+.field-group label {
+    margin-right: 10px;
+}
+
+/* Styling for labels */
+label {
+    flex: 1; /* Making labels flexible within flexbox layout */
+    margin-right: 10px; /* Adding right margin */
+}
+
+/* Styling for input fields and select elements */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="tel"],
+input[type="email"],
+input[type="text"],
+select {
+    flex: 2;
+    width:60%;/* Making input fields and select elements flexible within flexbox layout */
+    padding: 10px; /* Adding padding */
+    border: 1px solid #ccc; /* Adding border */
+    border-radius: 5px; /* Adding border radius */
+    box-sizing: border-box;/* Including padding and border in element's dimensions */
+}
+
+/* Styling for radio buttons and checkboxes */
+input[type="radio"] {
+    margin-right: 5px; /* Adding right margin */
+}
+
+/* Styling for submit button */
+input[type="submit"] {
+    width: 40%; /* Setting width */
+    padding: 10px; /* Adding padding */
+    align-self: center; /* Centering content horizontally */
+    background-color: #4caf50; /* Setting background color */
+    color: #fff; /* Setting text color */
+    border: none; /* Removing border */
+    border-radius: 5px; /* Adding border radius */
+    cursor: pointer; /* Setting cursor to pointer */
+    font-size: 16px; /* Setting font size */
+    margin-top: 0; /* Adding top margin */
+}
+
+/* Styling for hover state of submit button */
+input[type="submit"]:hover {
+    background-color: #479be9; /* Changing background color on hover */
+}
+.form-row-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    
+}
+.form-row-card {
+    margin-bottom: 10px;
+
+}
+.form-row-card label {
+    margin-right: 10px; /* Decrease the margin */
+}
+.form-row-declare{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 50%; /* Set left to 50% */
+    top: 50%; /* Set top to 50% */
+    transform: translate(-50%, -50%); /* Center the modal horizontally and vertically */
+    width: 50%;
+    height: auto; /* Adjust height as needed */
+    max-height: 100%; /* Ensure modal doesn't exceed viewport height */
+    overflow: auto;
+    padding-top: 0; /* Adjust padding as needed */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 0 auto; /* Center the content horizontally */
+    padding: 20px;
+    border: 1px solid #525555;
+    width: 80%;
+    max-width: 600px; /* Adjust max-width as needed */
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}

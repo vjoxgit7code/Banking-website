@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>        
+        <nav class="navigation">
+            <a href="{% url 'home' %}">Home</a>
+            <div class="dropdown">
+                <a class="dropbtn">Branches</a>
+                <div class="dropdown-content branches">
+                    <a href="https://en.wikipedia.org/wiki/Alappuzha">Alappuzha</a>
+                    <a href="https://en.wikipedia.org/wiki/Ernakulam">Ernakulam</a>
+                    <a href="https://en.wikipedia.org/wiki/Thrissur">Thrissur</a>
+                    <a href="https://en.wikipedia.org/wiki/Kozhikode">Kozhikode</a>
+                    <a href="https://en.wikipedia.org/wiki/Wayanad_district">Wayanad</a>
+                </div>
+            </div>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+    <div class="content">
+        <h1>Virtual <br><span>Banking </span><br>Environment</h1>
+        <p class="par">
+            Creating a banking website requires balancing functionality and aesthetics. <br>Adhering to requirements, like a clear homepage with login, registration,<br> and branch access via dropdown menus linked to Wikipedia, enhances <br>navigation. Simple login and registration processes streamline user access.
+        </p>
+    </div>
+    <div class="img">
+        <img src="{% static 'images/h3.png' %}" alt="A beautiful landscape" width="550" height="450px">
+    </div>
+    <p class="copyright">Copyright @ 2024, The Simple portal Using for Banking</p>
+</body>
+</html>

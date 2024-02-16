@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <link rel="stylesheet" href="{% static '/css/form.css' %}">
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <header>Application Form</header> 
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="field-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" placeholder="Enter your date of birth" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" placeholder="Enter your Age" required>
+                </div>
+                <div class="field-group">
+                    <label for="gender">Gender</label>
+                    <label for="male"><input type="radio" id="male" name="gender" required> Male</label>
+                    <label for="female"><input type="radio" id="female" name="gender" required> Female</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="contact">Contact:</label>
+                    <input type="tel" id="contact" placeholder="Enter your Ph number" required>
+                </div>
+                <div class="field-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Enter your mail id" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" placeholder="Enter your Address" required>
+                </div>
+                <div class="field-group">
+                    <label for="district">District:</label>
+                    <select id="district" required>
+                        <option value="">choose District</option>
+                        <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                        <option value="Pathanamthitta">Pathanamthitta</option>
+                        <option value="Malappuram">Malappuram</option>
+                        <option value="Kannur">Kannur</option>
+                        <option value="Palakkad">Palakkad</option>
+                    </select>
+                </div>
+            </div>  
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="branches">Branches:</label>
+                    <select id="branches" disabled required>
+                        <option value="">choose District first</option>
+                    </select>
+                </div>
+                <div class="field-group">
+                    <label for="account">Account:</label>
+                    <select id="account" required>
+                        <option value="" disabled selected>choose account type</option>
+                        <option>Savings account</option>
+                        <option>current account</option>
+                    </select>
+                </div>
+            </div>  
+            <div class="form-row-card">
+                <label for="Type of Identification">Type of Identification:</label>
+                <label for="debit"><input type="checkbox" id="debit" name="Type of Identificationt" > Debit card</label>
+                <label for="credit"><input type="checkbox" id="credit" name="Type of Identification" > Credit card</label>
+                <label for="cheque"><input type="checkbox" id="cheque" name="Type of Identification" > Cheque book</label>
+            </div>
+            <div class="form-row-declare">
+                <label><input type="checkbox" required> I hereby declare that above information is true according to my knowledge.</label>
+            </div>
+            <div class="form-row-button">
+                <input type="submit" value="Submit Form">
+            </div>
+        </form>
+    </div>
+    <div id="popupMessage" class="popup-message" style="display: none;">
+        <div class="popup-content">
+            <p>Application accepted</p>
+            <button id="returnHome">Return to Home Page</button>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Application accepted</p>
+            <a href="{% url 'home' %}">Return to Home Page</a>
+        </div>
+    </div>
+
+    <script>
+        const districtSelect = document.getElementById('district');
+        const branchSelect = document.getElementById('branches');
+
+        const branchOptions = {
+            'Thiruvananthapuram': ['Chirayinkeezhu', 'Neyyattinkara', 'Nedumangadu', 'Varkala', 'Kattakada'],
+            'Pathanamthitta': ['Adoor', 'Konni', 'Kozhenchery', 'Mallappally', 'Thiruvalla'],
+            'Malappuram': ['Ernad', 'Kondotty', 'Nilambur', 'Ponnani', 'Tirurangadi'],
+            'Kannur': ['Iritty', 'Thalassery', 'Payyannur', 'Taliparamba'],
+            'Palakkad': ['Alathur', 'Chittur', 'Mannarkad', 'Ottappalam', 'Pattambi'],
+        };
+
+        function populateBranches() {
+            const selectedDistrict = districtSelect.value;
+            branchSelect.innerHTML = '<option value="">choose District First</option>';
+            if (selectedDistrict && branchOptions[selectedDistrict]) {
+                branchOptions[selectedDistrict].forEach(branch => {
+                    const option = document.createElement('option');
+                    option.textContent = branch;
+                    option.value = branch;
+                    branchSelect.appendChild(option);
+                });
+                branchSelect.disabled = false;
+            } else {
+                branchSelect.disabled = true;
+            }
+        }
+
+        districtSelect.addEventListener('change', populateBranches);
+
+        populateBranches();
+
+        // Display the modal when form is submitted
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            document.getElementById('myModal').style.display = 'block';
+        });
+
+        // Close the modal when clicking on the close button or outside the modal
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('myModal').style.display = 'none';
+        });
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                document.getElementById('myModal').style.display = 'none';
+            }
+        }
+    </script>
+    
+</body>
+</html>
